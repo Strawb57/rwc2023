@@ -37,11 +37,13 @@ addButton.addEventListener("click", function(){
 
         for (let i=0; i < entryArray.length; i++){
             console.log(entryArray[i]);
-            let currentEntry = Object.entries(entryArray[i]);
-            // delete currentEntry.name;
-            // delete currentEntry.score;
+            let currentEntry = Object.values(entryArray[i]);
+            delete currentEntry.name;
+            delete currentEntry.score;
+            console.log(currentEntry[0]);
+            console.log(currentEntry[1]);
             //const itemArr = currentEntry.
-            updateLineItem(currentEntry);
+            updateLineItem(currentEntry[0] + " - "  + currentEntry[1]);
         }
     
     })
