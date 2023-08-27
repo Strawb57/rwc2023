@@ -26,31 +26,37 @@ addButton.addEventListener("click", function(){
 
     push(pointsDB, member);
 
-    let entry = name + " " + points;
+    let entry = name + " - " + points;
 
-    //updateLineItem(entry);
+    updateLineItem(entry);
+    
 
     clearInputFields();
 
-    onValue( pointsDB, function(snapshot){
-        let entryArray = Object.values(snapshot.val());
 
-        for (let i=0; i < entryArray.length; i++){
-            console.log(entryArray[i]);
-            let currentEntry = Object.values(entryArray[i]);
-            delete currentEntry.name;
-            delete currentEntry.score;
-            console.log(currentEntry[0]);
-            console.log(currentEntry[1]);
-            //const itemArr = currentEntry.
-            updateLineItem(currentEntry[0] + " - "  + currentEntry[1]);
-        }
-    
-    })
 
     // console.log(name);
     // console.log(points);
 })
+
+onValue( pointsDB, function(snapshot){
+    let entryArray = Object.values(snapshot.val());
+
+    for (let i=0; i < entryArray.length; i++){
+        console.log(entryArray[i]);
+        let currentEntry = Object.values(entryArray[i]);
+        delete currentEntry.name;
+        delete currentEntry.score;
+        console.log(currentEntry[0]);
+        console.log(currentEntry[1]);
+        //const itemArr = currentEntry.
+        updateLineItem(currentEntry[0] + " - "  + currentEntry[1]);
+    }
+
+})
+
+
+
 
 function clearInputFields(){
     inputName.value = "";
@@ -59,6 +65,10 @@ function clearInputFields(){
 
 function updateLineItem(item){
     entryListEL.innerHTML += `<li>${item}</li>`;
+    // let nodeLi = document.createElement("li");
+    // const textnode = document.createTextNode("Guiness or Thatchers");
+    // nodeLi.appendChild(textnode);
+    // entryListEL.appendChild(node);
 }
 
 function removeLineItems(){
@@ -71,3 +81,4 @@ function removeLineItems(){
 function updateAllLineItems(){
 
 }
+
