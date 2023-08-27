@@ -28,7 +28,7 @@ addButton.addEventListener("click", function(){
 
     let entry = name + " - " + points;
 
-    updateLineItem(entry);
+  //  updateLineItem(entry);
     
 
     clearInputFields();
